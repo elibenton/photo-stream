@@ -18,10 +18,10 @@
 		<span style="background-image: url('{{ safe_name | processed_path: 'large' }}')"></span>
 	</span>
 	<a class="open" href="{{ slug | relative_url  }}" data-target="{{ slug }}">Open</a>
-	<a class="close" href="{{ '/' | relative_url }}">Close</a>
+    <a class="close" href="{{ '/' | relative_url }}">Close</a>
 
     {% unless forloop.first %}
-    	{% assign previous_slug = images[previous_index].name | strip_extension | slugify %}
+        {% assign previous_slug = images[previous_index].name | strip_extension | slugify %}
     	<a href="{{ previous_slug | relative_url }}" data-target="{{ previous_slug }}" class="previous" title="Go to previous photo">
             <span>Previous</span>
         </a>
@@ -34,9 +34,13 @@
         </a>
     {% endunless %}
 
-    <!-- <ul class="meta">
-    <li>{{ image_path | exif: 'model'}}</li>
-    <li>{{ image_path | exif: 'exposure_time.to_s'}}</li>
-    <li><span class="aperture"><em>f</em>/</span>{{ image_path | exif: 'f_number.to_f'}}</li>
-	</ul> -->
+    <ul class="meta">
+        <li><b>{{ image_path | exif: 'date_time' | date: '%B %d, %Y' }}</b></li>
+        <li>&nbsp;</li>
+        <li>{{ image_path | exif: 'model'}}</li>
+        <li>{{ image_path | exif: 'exposure_time.to_s'}}</li>
+        <!-- <li>{{ image_path | exif: 'gps_latitude'}}</li>
+        <li>{{ image_path | exif: 'gps_longitude'}}</li> -->
+        <li><span class="aperture"><em>f</em>/</span>{{ image_path | exif: 'f_number.to_f'}}</li>
+	</ul>
 </li>

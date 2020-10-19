@@ -204,12 +204,16 @@ body {
 			position: absolute;
 			right: 4px;
 			bottom: 12px;
-			color: #fff;
-			text-shadow: #000 0 1px 1px, #000 0 2px 4px;
-			opacity: .5;
+			color:gray;
+			background-color: gainsboro;
+			padding: 0 4px;
+			font-size: .7em;
+			border: thin solid;
+			border-radius: .7rem;
 		
 			li {
-				margin-right: 12px;
+				margin-right: 5px;
+				margin-left: 5px;
 			}
 		}
 		
