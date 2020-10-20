@@ -426,3 +426,25 @@ body {
     opacity: 1;
   }
 }
+
+// META DATA
+.large-meta {
+	display: flex;
+	position: absolute;
+	align-items: center;
+	// right: 4px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	bottom: 8px;
+	color:gray;
+	background-color: gainsboro;
+	padding: 0 4px;
+	font-size: .9em;
+	border: thin solid;
+	border-radius: .7rem;
+
+	li {
+				margin-right: 5px;
+				margin-left: 5px;
+			}
+}

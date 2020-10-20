@@ -15,7 +15,19 @@
 
 	<img class="lazyload" data-src="{{ safe_name | processed_path: 'thumbnail' }}" src="{{ safe_name | processed_path: 'tint' }}" height="{{ image_path | exif: 'height'}}" width="{{ image_path | exif: 'width'}}" />
 	<span class="full">
-		<span style="background-image: url('{{ safe_name | processed_path: 'large' }}')"></span>
+        <ul class="large-meta">
+            <li><b>{{ image_path | exif: 'date_time' | date: '%B %d, %Y' }}</b></li>
+            <li>&nbsp;</li>
+            <li>{{ image_path | exif: 'model'}}</li>
+            <li>{{ image_path | exif: 'exposure_time.to_s'}}</li>
+            <li><span class="aperture"><em>f</em>/</span>{{ image_path | exif: 'f_number.to_f'}}</li>
+             <!-- <li>{{ image_path | exif: 'gps_latitude'}}</li>
+            <li>{{ image_path | exif: 'gps_longitude'}}</li> -->
+        </ul>
+
+        
+        <span style="background-image: url('{{ safe_name | processed_path: 'large' }}')"></span>
+        
 	</span>
 	<a class="open" href="{{ slug | relative_url  }}" data-target="{{ slug }}">Open</a>
     <a class="close" href="{{ '/' | relative_url }}">Close</a>
@@ -33,14 +45,4 @@
             <span>Next</span>
         </a>
     {% endunless %}
-
-    <ul class="meta">
-        <li><b>{{ image_path | exif: 'date_time' | date: '%B %d, %Y' }}</b></li>
-        <li>&nbsp;</li>
-        <li>{{ image_path | exif: 'model'}}</li>
-        <li>{{ image_path | exif: 'exposure_time.to_s'}}</li>
-        <!-- <li>{{ image_path | exif: 'gps_latitude'}}</li>
-        <li>{{ image_path | exif: 'gps_longitude'}}</li> -->
-        <li><span class="aperture"><em>f</em>/</span>{{ image_path | exif: 'f_number.to_f'}}</li>
-	</ul>
 </li>
