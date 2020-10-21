@@ -23,11 +23,11 @@ email: eliunited@gmail.com
 author:
   name: Eli Benton Cohen
   email: eliunited@gmail.com #optional
-  website: https://elibenton.com
+  website: https://elibenton.co
 description: >- # this means to ignore newlines until "baseurl:"
-  A minimalistic, self-hosted photo stream, by Tim Van Damme
+  A minimalistic, self-hosted photo stream, developed by Tim Van Damme
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://phtoos.elibenton.com" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://photos.elibenton.co" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: 
 github_username: elibenton
 instagram_username: 

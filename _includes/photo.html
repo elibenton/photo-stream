@@ -1,7 +1,10 @@
-{% assign slug = image.name | strip_extension | slugify %}
+{% assign name_parts = image.name  | strip_extension | split: " - " %}
+{% assign slug = name_parts.last | strip_extension | slugify %}
 {% assign safe_name = image.name | uri_escape %}
+
 {% assign next_index = forloop.index0 | plus: 1 %}
 {% assign previous_index = forloop.index0 | minus: 1 %}
+
 
 {% capture image_path %}photos/original/{{ image.name }}{% endcapture %}
 
@@ -11,23 +14,24 @@
     {% assign target = "" %}
 {% endif %}
 
-<li class="item {{ target }}" id="{{ slug }}" style="background-image: url('{{ safe_name | processed_path: 'tint' }}')" title="{{ image.name | strip_extension }}">
-
+<li class="item {{ target }}" id="{{ slug }}" style="background-image: url('{{ safe_name | processed_path: 'tint' }}')" title="">
 	<img class="lazyload" data-src="{{ safe_name | processed_path: 'thumbnail' }}" src="{{ safe_name | processed_path: 'tint' }}" height="{{ image_path | exif: 'height'}}" width="{{ image_path | exif: 'width'}}" />
 	<span class="full">
-        <ul class="large-meta">
-            <li><b>{{ image_path | exif: 'date_time' | date: '%B %d, %Y' }}</b></li>
-            <li>&nbsp;</li>
-            <li>{{ image_path | exif: 'model'}}</li>
+        <div class="meta-info top">
+            {{ name_parts.first }}
+        </div>
+        <div class="meta-info middle">
+            {{ image_path | exif: 'date_time' | date: '%B %d, %Y' }}
+        </div>
+        <ul class="meta-info">
+            <li>Fuji {{ image_path | exif: 'model'}}</li>
             <li>{{ image_path | exif: 'exposure_time.to_s'}}</li>
-            <li><span class="aperture"><em>f</em>/</span>{{ image_path | exif: 'f_number.to_f'}}</li>
-             <!-- <li>{{ image_path | exif: 'gps_latitude'}}</li>
-            <li>{{ image_path | exif: 'gps_longitude'}}</li> -->
+            <li>
+                <span class="aperture"><em>f</em>/</span>
+                {{ image_path | exif: 'f_number.to_f'}}
+            </li>
         </ul>
-
-        
         <span style="background-image: url('{{ safe_name | processed_path: 'large' }}')"></span>
-        
 	</span>
 	<a class="open" href="{{ slug | relative_url  }}" data-target="{{ slug }}">Open</a>
     <a class="close" href="{{ '/' | relative_url }}">Close</a>
@@ -45,4 +49,8 @@
             <span>Next</span>
         </a>
     {% endunless %}
+
+    <ul class="meta-middle">
+        <li>{{ name_parts.last }}</li>
+	</ul>
 </li>
