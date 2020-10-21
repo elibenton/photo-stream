@@ -1,5 +1,5 @@
 {% assign name_parts = image.name  | strip_extension | split: " - " %}
-{% assign slug = name_parts.last | strip_extension | slugify %}
+{% assign slug =image.name | strip_extension | slugify %}
 {% assign safe_name = image.name | uri_escape %}
 
 {% assign next_index = forloop.index0 | plus: 1 %}
